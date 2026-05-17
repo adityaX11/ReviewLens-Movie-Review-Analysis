@@ -13,4 +13,4 @@ def save_svm_model_and_vectorizer(model, vectorizer, model_path='svm_sentiment_m
 def load_svm_model_and_vectorizer(model_path='svm_sentiment_model.joblib', vectorizer_path='tfidf_vectorizer.joblib'):
     model = joblib.load(model_path)
     vectorizer = joblib.load(vectorizer_path)
-    return model, vectorizer 
+    return model, vectorizer

@@ -28,23 +28,23 @@ def preprocess(text):
     # Ensure input is a string
     if not isinstance(text, str):
         return ""
-    
+
     # Convert to lowercase and remove punctuation
     text = text.lower()
     text = text.translate(str.maketrans('', '', string.punctuation))
-    
+
     # Simple tokenization as fallback if NLTK fails
     try:
         tokens = word_tokenize(text)
     except:
         # Fallback to simple split if NLTK tokenization fails
         tokens = text.split()
-    
+
     # Lemmatize and remove stopwords
     if lemmatizer:
         tokens = [lemmatizer.lemmatize(word) for word in tokens if word not in stop_words]
     else:
         # Fallback without lemmatization
         tokens = [word for word in tokens if word not in stop_words]
-    
+
     return ' '.join(tokens)
