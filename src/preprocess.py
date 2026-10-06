@@ -1,3 +1,4 @@
+import os
 import re
 import string
 import nltk
@@ -5,12 +6,34 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
-# Ensure required NLTK resources are available
-for resource in ['punkt', 'punkt_tab', 'stopwords', 'wordnet', 'omw-1.4']:
+# Configure private, secure NLTK data directory to prevent world-writable warnings
+NLTK_DATA_DIR = os.path.expanduser('~/nltk_data')
+try:
+    os.makedirs(NLTK_DATA_DIR, exist_ok=True)
+    if hasattr(os, 'chmod'):
+        os.chmod(NLTK_DATA_DIR, 0o700)
+except Exception:
+    pass
+
+if NLTK_DATA_DIR not in nltk.data.path:
+    nltk.data.path.insert(0, NLTK_DATA_DIR)
+
+REQUIRED_NLTK_RESOURCES = [
+    ('tokenizers/punkt', 'punkt'),
+    ('tokenizers/punkt_tab', 'punkt_tab'),
+    ('corpora/stopwords', 'stopwords'),
+    ('corpora/wordnet', 'wordnet'),
+    ('corpora/omw-1.4', 'omw-1.4'),
+]
+
+for check_path, pkg_name in REQUIRED_NLTK_RESOURCES:
     try:
-        nltk.download(resource, quiet=True)
-    except Exception:
-        pass
+        nltk.data.find(check_path)
+    except LookupError:
+        try:
+            nltk.download(pkg_name, download_dir=NLTK_DATA_DIR, quiet=True)
+        except Exception:
+            pass
 
 # Initialize stopwords and lemmatizer safely
 try:

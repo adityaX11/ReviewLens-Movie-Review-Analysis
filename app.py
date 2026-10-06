@@ -14,6 +14,21 @@ from sklearn.metrics import confusion_matrix, classification_report
 from src.predictor import SentimentPredictor
 from src.preprocess import preprocess
 
+# Responsive layout helpers compatible with both Streamlit 1.40+ and 1.65+ (width='stretch')
+def render_dataframe(df, **kwargs):
+    """Render dataframe with modern width='stretch' and safe fallback."""
+    try:
+        return st.dataframe(df, width="stretch", **kwargs)
+    except TypeError:
+        return st.dataframe(df, use_container_width=True, **kwargs)
+
+def render_chart(fig, **kwargs):
+    """Render plotly chart with modern width='stretch' and safe fallback."""
+    try:
+        return st.plotly_chart(fig, width="stretch", **kwargs)
+    except (TypeError, ValueError):
+        return st.plotly_chart(fig, use_container_width=True, **kwargs)
+
 # Set Streamlit Page Config
 st.set_page_config(
     page_title="ReviewLens | Movie Review Sentiment AI",
@@ -423,7 +438,7 @@ with tab_movie:
                 plot_bgcolor='rgba(0,0,0,0)',
                 font=dict(color="#CBD5E0")
             )
-            st.plotly_chart(pie_fig, use_container_width=True)
+            render_chart(pie_fig)
 
         with vcol2:
             # Confidence Histogram
@@ -442,7 +457,7 @@ with tab_movie:
                 font=dict(color="#CBD5E0"),
                 bargap=0.1
             )
-            st.plotly_chart(conf_fig, use_container_width=True)
+            render_chart(conf_fig)
 
         # Reviews Inspection Table
         st.markdown(f"#### 🔍 Sample Audience Reviews for {active_movie}")
@@ -458,13 +473,12 @@ with tab_movie:
         elif show_sentiment_filter == "Negative Only":
             display_df = display_df[display_df['predicted_sentiment'] == 'negative']
 
-        st.dataframe(
+        render_dataframe(
             display_df.head(20).rename(columns={
                 'review': 'Raw Review Text',
                 'predicted_sentiment': 'Predicted Sentiment',
                 'confidence_score': 'Confidence (%)'
             }),
-            use_container_width=True,
             height=320
         )
 
@@ -562,7 +576,7 @@ with tab_live:
                     paper_bgcolor='rgba(0,0,0,0)',
                     font=dict(color="#CBD5E0")
                 )
-                st.plotly_chart(gauge_fig, use_container_width=True)
+                render_chart(gauge_fig)
 
             with st.expander("🛠️ View Cleaned Text (NLP Preprocessed)"):
                 st.code(result['clean_text'] if result['clean_text'] else "(empty string after stopword & punctuation cleaning)", language="text")
@@ -676,7 +690,7 @@ with tab_csv:
                         text='Count'
                     )
                     bar_fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)', font=dict(color="#CBD5E0"))
-                    st.plotly_chart(bar_fig, use_container_width=True)
+                    render_chart(bar_fig)
 
                 with b_fig_col2:
                     donut_fig = go.Figure(data=[go.Pie(
@@ -686,7 +700,7 @@ with tab_csv:
                         marker=dict(colors=['#2ed573', '#ff4757'])
                     )])
                     donut_fig.update_layout(title="Audience Consensus Share", paper_bgcolor='rgba(0,0,0,0)', font=dict(color="#CBD5E0"))
-                    st.plotly_chart(donut_fig, use_container_width=True)
+                    render_chart(donut_fig)
 
                 # Automated Evaluation / Confusion Matrix if ground truth present
                 gt_col_candidates = [c for c in processed_df.columns if c.strip().lower() in ['sentiment', 'sentiment_true', 'true_sentiment', 'label']]
@@ -714,13 +728,13 @@ with tab_csv:
                                 title=f"Batch Confusion Matrix ({summary['model_used']})"
                             )
                             cm_fig.update_layout(paper_bgcolor='rgba(0,0,0,0)', font=dict(color="#CBD5E0"))
-                            st.plotly_chart(cm_fig, use_container_width=True)
+                            render_chart(cm_fig)
 
                         with ev2:
                             eval_rep = classification_report(y_true[valid_mask], y_pred[valid_mask], output_dict=True)
                             rep_df = pd.DataFrame(eval_rep).transpose().round(3)
                             st.markdown("<b>Classification Metrics Report:</b>", unsafe_allow_html=True)
-                            st.dataframe(rep_df, use_container_width=True)
+                            render_dataframe(rep_df)
 
                 st.markdown("#### 📥 Download Enriched Prediction Dataset")
                 export_cols = [c for c in processed_df.columns if c != 'clean_review']
@@ -733,7 +747,7 @@ with tab_csv:
                     type="primary"
                 )
 
-                st.dataframe(processed_df[export_cols].head(25), use_container_width=True)
+                render_dataframe(processed_df[export_cols].head(25))
 
 # =========================================================================
 # TAB 4: MODEL EVALUATION, COMPARISON & DIAGNOSTICS
@@ -771,7 +785,7 @@ with tab_eval:
         lb_display['Recall'] = lb_display['Recall'].apply(lambda x: f"{x:.4f}")
 
         st.markdown("#### 🏆 Algorithms Leaderboard")
-        st.dataframe(lb_display, use_container_width=True, hide_index=True)
+        render_dataframe(lb_display, hide_index=True)
 
         # Plotly Comparison Bar Chart
         comp_df = pd.DataFrame(leaderboard_data)
@@ -809,7 +823,7 @@ with tab_eval:
             yaxis=dict(title="Metric Value"),
             legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
         )
-        st.plotly_chart(fig_comp, use_container_width=True)
+        render_chart(fig_comp)
 
         st.markdown("---")
         st.markdown("#### 🔍 Deep Diagnostics: Confusion Matrix & Classification Report per Model")
@@ -844,7 +858,7 @@ with tab_eval:
                 font=dict(color="#CBD5E0"),
                 margin=dict(t=40, b=20, l=20, r=20)
             )
-            st.plotly_chart(cm_fig, use_container_width=True)
+            render_chart(cm_fig)
 
         with col_d2:
             st.markdown(f"<b>Classification Report: {model_inspect}</b>", unsafe_allow_html=True)
@@ -858,7 +872,7 @@ with tab_eval:
                             "F1-Score": round(v.get('f1-score', 0), 3),
                             "Support": int(v.get('support', 0))
                         }
-                st.dataframe(pd.DataFrame(clean_rep).transpose(), use_container_width=True, height=230)
+                render_dataframe(pd.DataFrame(clean_rep).transpose(), height=230)
 
         st.markdown("---")
         st.markdown("#### 🔤 Influential Indicator Features (TF-IDF Weights)")
@@ -882,7 +896,7 @@ with tab_eval:
                     font=dict(color="#CBD5E0"),
                     yaxis={'categoryorder': 'total ascending'}
                 )
-                st.plotly_chart(fig_pos, use_container_width=True)
+                render_chart(fig_pos)
 
         with fcol2:
             top_neg = metrics_data.get('top_negative_features', [])[:15]
@@ -903,7 +917,7 @@ with tab_eval:
                     font=dict(color="#CBD5E0"),
                     yaxis={'categoryorder': 'total ascending'}
                 )
-                st.plotly_chart(fig_neg, use_container_width=True)
+                render_chart(fig_neg)
 
 # =========================================================================
 # TAB 5: CSV FORMAT & USER GUIDE
