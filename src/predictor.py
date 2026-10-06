@@ -41,7 +41,6 @@ class SentimentPredictor:
             candidates.append(os.path.join(custom_dir, filename))
         candidates.extend([
             os.path.join("models", filename),
-            os.path.join("Sentiment_Analysis", "models", filename),
             os.path.join("..", "models", filename),
             filename
         ])

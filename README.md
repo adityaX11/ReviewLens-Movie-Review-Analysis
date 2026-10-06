@@ -1,14 +1,29 @@
 # 🎬 ReviewLens: Movie Review Sentiment Analysis Engine
 ### Production-Grade Multi-Algorithm Machine Learning & NLP Dashboard
 
-[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-FF4B4B.svg)](https://streamlit.io/)
-[![scikit-learn](https://img.shields.io/badge/ML-scikit--learn-orange.svg)](https://scikit-learn.org/)
+[![Developer](https://img.shields.io/badge/Developer-Aditya%20Kumar-orange.svg?style=flat&logo=github)](https://github.com/adityaX11)
+[![Version](https://img.shields.io/badge/Version-2.0.0-blue.svg?style=flat&logo=semver)]()
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat)](LICENSE)
+[![Visitors](https://visitor-badge.laobi.icu/badge?page_id=adityaX11.ReviewLens-Movie-Review-Analysis)](https://github.com/adityaX11/ReviewLens-Movie-Review-Analysis)
+[![Project Views](https://komarev.com/ghpvc/?username=adityaX11-ReviewLens&label=Project%20Views&color=0e75b6&style=flat)]()
+
+[![Python 3.9+](https://img.shields.io/badge/Python-3.9%2B-blue.svg?logo=python)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Frontend-Streamlit-FF4B4B.svg?logo=streamlit)](https://streamlit.io/)
+[![scikit-learn](https://img.shields.io/badge/ML-scikit--learn-orange.svg?logo=scikit-learn)](https://scikit-learn.org/)
 [![Champion Accuracy](https://img.shields.io/badge/Champion%20Accuracy-89.80%25-brightgreen.svg)]()
 [![Champion R2](https://img.shields.io/badge/Champion%20R%C2%B2-0.6866-success.svg)]()
 [![Serialization](https://img.shields.io/badge/Model%20Format-Pickle%20(.pkl)-blueviolet.svg)]()
 
 > **ReviewLens** is an end-to-end NLP and multi-algorithm Machine Learning suite for movie audience sentiment classification, consensus forecasting, and batch analytics.
+
+---
+
+## 👨‍💻 Developer & Maintainer
+
+- **Lead Developer**: **Aditya Kumar**
+- **GitHub**: [@adityaX11](https://github.com/adityaX11)
+- **Current Version**: `v2.0.0` (Production Release)
+- **License**: [MIT License](LICENSE)
 
 ---
 
@@ -88,6 +103,7 @@ ReviewLens-Movie-Review-Analysis/
 ├── train.py                       # Multi-Model Training & Evaluation Pipeline
 ├── requirements.txt               # Production Python Dependencies
 ├── README.md                      # Complete Project Documentation
+├── LICENSE                        # Official MIT License File
 ├── .gitignore                     # Ignores bytecode and cache files
 ├── data/
 │   ├── movie_reviews_10k.csv      # 10,000 Balanced IMDB Dataset
@@ -166,3 +182,16 @@ Open your browser at `http://localhost:8501`.
 - **Natural Language Processing**: NLTK (`stopwords`, `WordNetLemmatizer`, `word_tokenize`, regex)
 - **Serialization**: Python standard `pickle` (`.pkl`)
 - **Data Engineering**: Pandas, NumPy
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👥 Contributors & Contact
+
+- **Aditya Kumar** - [GitHub Profile](https://github.com/adityaX11)
+- If you find this project helpful, don't forget to give it a ⭐ on GitHub!

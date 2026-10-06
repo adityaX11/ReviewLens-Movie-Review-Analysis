@@ -41,11 +41,7 @@ def train_and_evaluate_all_models(
     """
     print(f"Loading dataset from: {data_path}")
     if not os.path.exists(data_path):
-        alt_path = os.path.join("Sentiment_Analysis", data_path)
-        if os.path.exists(alt_path):
-            data_path = alt_path
-        else:
-            raise FileNotFoundError(f"Dataset not found at {data_path}")
+        raise FileNotFoundError(f"Dataset not found at {data_path}")
 
     df = pd.read_csv(data_path)
     print(f"Loaded {len(df)} samples. Distribution:\n{df['sentiment'].value_counts()}")
@@ -200,7 +196,7 @@ def train_and_evaluate_all_models(
     }
 
     # Save artifacts using PICKLE mechanism
-    save_dirs = [model_output_dir, os.path.join("Sentiment_Analysis", model_output_dir)]
+    save_dirs = [model_output_dir]
     for target_dir in save_dirs:
         os.makedirs(target_dir, exist_ok=True)
 

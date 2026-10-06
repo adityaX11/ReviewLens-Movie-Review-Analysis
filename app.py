@@ -1,8 +1,20 @@
+import sys
 import os
 import json
 import io
 import pandas as pd
 import numpy as np
+
+# Auto-route to Streamlit server if executed via `python app.py` or double-clicked
+try:
+    from streamlit.runtime.scriptrunner import get_script_run_ctx
+    if get_script_run_ctx() is None:
+        from streamlit.web import cli as stcli
+        sys.argv = ["streamlit", "run", os.path.abspath(__file__)]
+        sys.exit(stcli.main())
+except Exception:
+    pass
+
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
@@ -179,26 +191,17 @@ def get_predictor():
 
 @st.cache_data(show_spinner="Loading 10,000 dataset...")
 def load_main_dataset():
-    paths = [
-        "data/movie_reviews_10k.csv",
-        "Sentiment_Analysis/data/movie_reviews_10k.csv",
-        "Sentiment_Analysis/data/movie_reviews.csv"
-    ]
-    for p in paths:
-        if os.path.exists(p):
-            return pd.read_csv(p)
+    path = "data/movie_reviews_10k.csv"
+    if os.path.exists(path):
+        return pd.read_csv(path)
     return pd.DataFrame()
 
 @st.cache_data
 def load_model_metrics():
-    paths = [
-        "models/model_metrics.json",
-        "Sentiment_Analysis/models/model_metrics.json"
-    ]
-    for p in paths:
-        if os.path.exists(p):
-            with open(p, "r") as f:
-                return json.load(f)
+    path = "models/model_metrics.json"
+    if os.path.exists(path):
+        with open(path, "r") as f:
+            return json.load(f)
     return {}
 
 try:
@@ -268,8 +271,6 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### 📥 Quick Sample Downloads")
     sample_path = "data/sample_movie_reviews.csv"
-    if not os.path.exists(sample_path):
-        sample_path = "Sentiment_Analysis/data/sample_movie_reviews.csv"
 
     if os.path.exists(sample_path):
         with open(sample_path, "rb") as f:
@@ -613,8 +614,6 @@ with tab_csv:
             st.error(f"Error parsing uploaded CSV: {e}")
     elif use_sample_btn:
         sample_path = "data/sample_movie_reviews.csv"
-        if not os.path.exists(sample_path):
-            sample_path = "Sentiment_Analysis/data/sample_movie_reviews.csv"
         if os.path.exists(sample_path):
             target_df = pd.read_csv(sample_path)
             st.success(f"Loaded built-in sample test dataset with {len(target_df)} reviews.")
