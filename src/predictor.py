@@ -1,8 +1,16 @@
 import os
 import pickle
+import warnings
 import numpy as np
 import pandas as pd
 from typing import List, Dict, Any, Tuple, Optional
+
+# Suppress cross-version scikit-learn unpickling warnings
+try:
+    from sklearn.exceptions import InconsistentVersionWarning
+    warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
+except ImportError:
+    pass
 
 try:
     from src.preprocess import preprocess

@@ -2,9 +2,16 @@ import sys
 import os
 import json
 import io
+import warnings
 import pandas as pd
 import numpy as np
 
+# Suppress cross-version scikit-learn unpickling warnings
+try:
+    from sklearn.exceptions import InconsistentVersionWarning
+    warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
+except ImportError:
+    pass
 
 import streamlit as st
 import plotly.express as px
