@@ -7,8 +7,11 @@ textColor = "#FAFAFA"
 font = "sans serif"
 
 [server]
-headless = false
-enableXsrfProtection = true
+headless = true
+port = 8501
+address = "0.0.0.0"
+enableCORS = false
+enableXsrfProtection = false
 maxUploadSize = 100
 
 [browser]

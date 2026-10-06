@@ -5,15 +5,6 @@ import io
 import pandas as pd
 import numpy as np
 
-# Auto-route to Streamlit server if executed via `python app.py` or double-clicked
-try:
-    from streamlit.runtime.scriptrunner import get_script_run_ctx
-    if get_script_run_ctx() is None:
-        from streamlit.web import cli as stcli
-        sys.argv = ["streamlit", "run", os.path.abspath(__file__)]
-        sys.exit(stcli.main())
-except Exception:
-    pass
 
 import streamlit as st
 import plotly.express as px
