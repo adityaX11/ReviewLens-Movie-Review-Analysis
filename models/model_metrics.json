@@ -1,0 +1,494 @@
+{
+  "dataset_size": 10000,
+  "train_samples": 8000,
+  "test_samples": 2000,
+  "champion_model": "Linear SVM",
+  "leaderboard": [
+    {
+      "model_name": "Linear SVM",
+      "accuracy": 0.898,
+      "r2_score": 0.6866,
+      "f1_score": 0.898,
+      "precision": 0.898,
+      "recall": 0.898
+    },
+    {
+      "model_name": "Logistic Regression",
+      "accuracy": 0.893,
+      "r2_score": 0.6043,
+      "f1_score": 0.893,
+      "precision": 0.8931,
+      "recall": 0.893
+    },
+    {
+      "model_name": "Naive Bayes",
+      "accuracy": 0.8805,
+      "r2_score": 0.5426,
+      "f1_score": 0.8805,
+      "precision": 0.8805,
+      "recall": 0.8805
+    },
+    {
+      "model_name": "Random Forest",
+      "accuracy": 0.854,
+      "r2_score": 0.3735,
+      "f1_score": 0.854,
+      "precision": 0.854,
+      "recall": 0.854
+    }
+  ],
+  "all_models_metrics": {
+    "Linear SVM": {
+      "accuracy": 0.898,
+      "r2_score": 0.6866,
+      "f1_score": 0.898,
+      "precision": 0.898,
+      "recall": 0.898,
+      "confusion_matrix": {
+        "labels": [
+          "positive",
+          "negative"
+        ],
+        "matrix": [
+          [
+            906,
+            100
+          ],
+          [
+            104,
+            890
+          ]
+        ]
+      },
+      "classification_report": {
+        "negative": {
+          "precision": 0.898989898989899,
+          "recall": 0.8953722334004024,
+          "f1-score": 0.8971774193548387,
+          "support": 994.0
+        },
+        "positive": {
+          "precision": 0.897029702970297,
+          "recall": 0.9005964214711729,
+          "f1-score": 0.8988095238095238,
+          "support": 1006.0
+        },
+        "accuracy": 0.898,
+        "macro avg": {
+          "precision": 0.8980098009800981,
+          "recall": 0.8979843274357877,
+          "f1-score": 0.8979934715821813,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 0.8980039203920391,
+          "recall": 0.898,
+          "f1-score": 0.8979983678955453,
+          "support": 2000.0
+        }
+      }
+    },
+    "Logistic Regression": {
+      "accuracy": 0.893,
+      "r2_score": 0.6043,
+      "f1_score": 0.893,
+      "precision": 0.8931,
+      "recall": 0.893,
+      "confusion_matrix": {
+        "labels": [
+          "positive",
+          "negative"
+        ],
+        "matrix": [
+          [
+            909,
+            97
+          ],
+          [
+            117,
+            877
+          ]
+        ]
+      },
+      "classification_report": {
+        "negative": {
+          "precision": 0.9004106776180698,
+          "recall": 0.8822937625754527,
+          "f1-score": 0.891260162601626,
+          "support": 994.0
+        },
+        "positive": {
+          "precision": 0.8859649122807017,
+          "recall": 0.9035785288270378,
+          "f1-score": 0.8946850393700787,
+          "support": 1006.0
+        },
+        "accuracy": 0.893,
+        "macro avg": {
+          "precision": 0.8931877949493858,
+          "recall": 0.8929361457012452,
+          "f1-score": 0.8929726009858523,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 0.8931444576533737,
+          "recall": 0.893,
+          "f1-score": 0.8929828756161576,
+          "support": 2000.0
+        }
+      }
+    },
+    "Naive Bayes": {
+      "accuracy": 0.8805,
+      "r2_score": 0.5426,
+      "f1_score": 0.8805,
+      "precision": 0.8805,
+      "recall": 0.8805,
+      "confusion_matrix": {
+        "labels": [
+          "positive",
+          "negative"
+        ],
+        "matrix": [
+          [
+            884,
+            122
+          ],
+          [
+            117,
+            877
+          ]
+        ]
+      },
+      "classification_report": {
+        "negative": {
+          "precision": 0.8778778778778779,
+          "recall": 0.8822937625754527,
+          "f1-score": 0.880080280983442,
+          "support": 994.0
+        },
+        "positive": {
+          "precision": 0.8831168831168831,
+          "recall": 0.878727634194831,
+          "f1-score": 0.8809167912306926,
+          "support": 1006.0
+        },
+        "accuracy": 0.8805,
+        "macro avg": {
+          "precision": 0.8804973804973805,
+          "recall": 0.8805106983851418,
+          "f1-score": 0.8804985361070673,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 0.8805130975130975,
+          "recall": 0.8805,
+          "f1-score": 0.8805010456378091,
+          "support": 2000.0
+        }
+      }
+    },
+    "Random Forest": {
+      "accuracy": 0.854,
+      "r2_score": 0.3735,
+      "f1_score": 0.854,
+      "precision": 0.854,
+      "recall": 0.854,
+      "confusion_matrix": {
+        "labels": [
+          "positive",
+          "negative"
+        ],
+        "matrix": [
+          [
+            865,
+            141
+          ],
+          [
+            151,
+            843
+          ]
+        ]
+      },
+      "classification_report": {
+        "negative": {
+          "precision": 0.8567073170731707,
+          "recall": 0.8480885311871227,
+          "f1-score": 0.8523761375126391,
+          "support": 994.0
+        },
+        "positive": {
+          "precision": 0.8513779527559056,
+          "recall": 0.8598409542743539,
+          "f1-score": 0.8555885262116716,
+          "support": 1006.0
+        },
+        "accuracy": 0.854,
+        "macro avg": {
+          "precision": 0.8540426349145381,
+          "recall": 0.8539647427307383,
+          "f1-score": 0.8539823318621553,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 0.8540266468215864,
+          "recall": 0.854,
+          "f1-score": 0.8539919690282525,
+          "support": 2000.0
+        }
+      }
+    }
+  },
+  "accuracy": 0.898,
+  "r2_score": 0.6866,
+  "f1_score": 0.898,
+  "precision": 0.898,
+  "recall": 0.898,
+  "confusion_matrix": {
+    "labels": [
+      "positive",
+      "negative"
+    ],
+    "matrix": [
+      [
+        906,
+        100
+      ],
+      [
+        104,
+        890
+      ]
+    ]
+  },
+  "classification_report": {
+    "negative": {
+      "precision": 0.898989898989899,
+      "recall": 0.8953722334004024,
+      "f1-score": 0.8971774193548387,
+      "support": 994.0
+    },
+    "positive": {
+      "precision": 0.897029702970297,
+      "recall": 0.9005964214711729,
+      "f1-score": 0.8988095238095238,
+      "support": 1006.0
+    },
+    "accuracy": 0.898,
+    "macro avg": {
+      "precision": 0.8980098009800981,
+      "recall": 0.8979843274357877,
+      "f1-score": 0.8979934715821813,
+      "support": 2000.0
+    },
+    "weighted avg": {
+      "precision": 0.8980039203920391,
+      "recall": 0.898,
+      "f1-score": 0.8979983678955453,
+      "support": 2000.0
+    }
+  },
+  "top_positive_features": [
+    {
+      "word": "excellent",
+      "weight": 3.0076405871947087
+    },
+    {
+      "word": "great",
+      "weight": 2.5753652028210117
+    },
+    {
+      "word": "perfect",
+      "weight": 2.5035526361940783
+    },
+    {
+      "word": "entertaining",
+      "weight": 2.24910240286005
+    },
+    {
+      "word": "loved",
+      "weight": 2.0995546890951724
+    },
+    {
+      "word": "one best",
+      "weight": 2.0881109263479365
+    },
+    {
+      "word": "fantastic",
+      "weight": 1.899785438372985
+    },
+    {
+      "word": "still",
+      "weight": 1.8362254446550434
+    },
+    {
+      "word": "wonderful",
+      "weight": 1.815029683747778
+    },
+    {
+      "word": "amazing",
+      "weight": 1.8089148667900867
+    },
+    {
+      "word": "surprised",
+      "weight": 1.773633816687785
+    },
+    {
+      "word": "incredible",
+      "weight": 1.7098181686167209
+    },
+    {
+      "word": "best",
+      "weight": 1.7013906198286015
+    },
+    {
+      "word": "favorite",
+      "weight": 1.675601467407246
+    },
+    {
+      "word": "well worth",
+      "weight": 1.5859090146199093
+    },
+    {
+      "word": "hilarious",
+      "weight": 1.4920151762893974
+    },
+    {
+      "word": "enjoy",
+      "weight": 1.4848161455481645
+    },
+    {
+      "word": "may not",
+      "weight": 1.439708884455273
+    },
+    {
+      "word": "dont want",
+      "weight": 1.425068854626128
+    },
+    {
+      "word": "intense",
+      "weight": 1.3984296037571455
+    },
+    {
+      "word": "crazy",
+      "weight": 1.3836477246687056
+    },
+    {
+      "word": "funniest",
+      "weight": 1.3830714185030455
+    },
+    {
+      "word": "brilliant",
+      "weight": 1.3809015285075463
+    },
+    {
+      "word": "dvd",
+      "weight": 1.377910736512842
+    },
+    {
+      "word": "loved movie",
+      "weight": 1.3427603895776923
+    }
+  ],
+  "top_negative_features": [
+    {
+      "word": "bad",
+      "weight": -3.0574270021875827
+    },
+    {
+      "word": "waste",
+      "weight": -2.818422882253767
+    },
+    {
+      "word": "worst",
+      "weight": -2.7613522731845466
+    },
+    {
+      "word": "awful",
+      "weight": -2.7328405494018324
+    },
+    {
+      "word": "boring",
+      "weight": -2.392301378192879
+    },
+    {
+      "word": "poor",
+      "weight": -2.3506003665841577
+    },
+    {
+      "word": "horrible",
+      "weight": -2.282114894125766
+    },
+    {
+      "word": "instead",
+      "weight": -2.053079645943705
+    },
+    {
+      "word": "stupid",
+      "weight": -1.99702507036124
+    },
+    {
+      "word": "avoid",
+      "weight": -1.96264413286477
+    },
+    {
+      "word": "lame",
+      "weight": -1.9532192355393259
+    },
+    {
+      "word": "dull",
+      "weight": -1.943013001790003
+    },
+    {
+      "word": "nothing",
+      "weight": -1.935813156791165
+    },
+    {
+      "word": "not good",
+      "weight": -1.9249449297091283
+    },
+    {
+      "word": "unfortunately",
+      "weight": -1.9056104833807828
+    },
+    {
+      "word": "disappointed",
+      "weight": -1.8713203071811768
+    },
+    {
+      "word": "supposed",
+      "weight": -1.7954961454659026
+    },
+    {
+      "word": "even",
+      "weight": -1.7865057902418866
+    },
+    {
+      "word": "no",
+      "weight": -1.771684579373587
+    },
+    {
+      "word": "disappointing",
+      "weight": -1.6852033849050954
+    },
+    {
+      "word": "worse",
+      "weight": -1.635310408702594
+    },
+    {
+      "word": "terrible",
+      "weight": -1.5925908571526426
+    },
+    {
+      "word": "sorry",
+      "weight": -1.5711302077934357
+    },
+    {
+      "word": "fails",
+      "weight": -1.549519370353171
+    },
+    {
+      "word": "plot",
+      "weight": -1.5370713830140534
+    }
+  ]
+}
