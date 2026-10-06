@@ -158,21 +158,6 @@ Open your browser at `http://localhost:8501`.
 
 ---
 
-## 🌐 Deploying to Streamlit Cloud (Free & 1-Click)
-
-1. Push your repository to GitHub:
-   ```bash
-   git add .
-   git commit -m "feat: multi-model sentiment analysis dashboard"
-   git push origin main
-   ```
-2. Visit [share.streamlit.io](https://share.streamlit.io/) and log in with GitHub.
-3. Click **New app**, select your repository:
-   - **Main file path**: `app.py`
-4. Click **Deploy!**
-
----
-
 ## 🛠️ Tech Stack & Methodologies
 
 - **Language**: Python 3.9+
