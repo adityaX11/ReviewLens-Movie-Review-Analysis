@@ -7,10 +7,7 @@ textColor = "#FAFAFA"
 font = "sans serif"
 
 [server]
-headless = false
-enableCORS = false
-enableXsrfProtection = false
-maxUploadSize = 100
+headless = true
 
 [browser]
 gatherUsageStats = false
